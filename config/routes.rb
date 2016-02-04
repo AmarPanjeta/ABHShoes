@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  resources :shoes, only: [:show,:new,:create,:index]
+
+  resources :users, only: [:index,:show,:new,:create]
+
+
+  resources :sessions, only: [:new,:create,:destroy]
+
+
+  get 'store/dummy'
+  get 'store/index'=> 'store#index'
+  root 'store#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

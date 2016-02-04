@@ -1,0 +1,26 @@
+
+<h1>Login</h1>
+<% if flash[:error] %>
+    <p id="notice"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:success] %>
+        <p id="notice"><%= flash[:success] %></p>
+        <% end %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session,url:sessions_path) do |f| %>
+
+      <%= f.label :username %>
+      <br>
+
+      <%= f.text_field :username %>
+      <br>
+
+      <%= f.label :password %>
+      <br>
+
+      <%= f.password_field :password %>
+      <br>
+
+      <%= f.submit "Potvrdi", class: "btn" %>
+    <%end%>
