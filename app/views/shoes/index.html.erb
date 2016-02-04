@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <% @shoes.each do |shoe| %>
+
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb shoe-box">
+        <a class="thumbnail" href="#">
+            <img class="img-responsive" src="<%=shoe.imgurl%>" style="height: 100px">
+        </a>
+        <p><%=shoe.name%></p>
+        <button class="btn">Dodaj u korpu</button>
+    </div>
+    <% end %>
+  </div>
+</div>

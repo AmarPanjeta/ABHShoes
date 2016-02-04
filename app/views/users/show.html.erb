@@ -1,0 +1,12 @@
+<h2><% if flash[:success] %>
+    <%= flash[:success] %>
+    <% end %></h2>
+    <br>
+<p>
+  <strong>Username:</strong><br>
+  <%=@user.username%>
+</p>
+<p>
+  <strong>Email:</strong><br>
+  <%=@user.email%>
+</p>
