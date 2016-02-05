@@ -1,8 +1,25 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1"
+<div class="container">
+  <div class="row">
+    <% @shoes.each do |shoe| %>
+
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb shoe-box">
+        <a href="<%=shoe_path(shoe.id)%>" class="thumbnail">
+            <img class="img-responsive" src="<%=shoe.imgurl%>" style="height: 100px">
+        </a>
+        <p><%=shoe.name%></p>
+        <button class="btn">Dodaj u korpu</button>
+    </div>
+    <% end %>
+  </div>
+</div>
+
 <div>
 <h1>Store#index</h1>
 <h2>Ovdje treba prikazivati artikle, trenutno nemam bazu</h2>
 <h3>Neka raspored bude da lici na SPA </h3>
 </div>
-
-
 <%= link_to "Nabacani bootstrap elementi",store_dummy_path %>
+</div>
+</div>
