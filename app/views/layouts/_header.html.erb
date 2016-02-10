@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">abhShoes</a>
+      <a class="navbar-brand" href="#">a<font color="#ff3333">bh</font>Shoes</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -22,8 +22,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-home"></span> <%=session[:username]%><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa <span class="badge">0</span></a></li>
-            <li><a href="#">Nalog</a></li>
+            <li><a href="<%=carts_path%>"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa <%if session[:cart_id] %> <span class="badge" id="cart-badge"><%=Cart.find_by_id(session[:cart_id]).line_items.count%><% end %></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Nalog </a></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Log out", session_path(current_user), method: "delete" %></li>
           </ul>

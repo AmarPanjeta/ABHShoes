@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new,:create,:destroy]
 
+  resources :line_items, only: [:create,:destroy]
+
+  resources :carts, only: [:index]
 
   get 'store/dummy'
   get 'store/index'=> 'store#index'
