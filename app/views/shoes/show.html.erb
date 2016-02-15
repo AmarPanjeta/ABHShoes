@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="button-style">
-          <button class="btn">Dodaj u korpu</button>
+          <button class="btn add-to-cart", id="shoe_<%=@shoe.id%>">Dodaj u korpu</button>
           <button class="btn btn-alert">Kupi odmah</button>
         </div>
     </div>
@@ -77,3 +77,37 @@
 </div>
 <div class="row" style="height:40px">
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.add-to-cart').click(function(e){
+    e.preventDefault();
+    console.log("uslo")
+    console.log($(this).attr("id"));
+    console.log("uslo")
+    var id=$(this).attr("id").split("_")[1];
+    var signed_in="<%=signed_in?%>";
+    console.log(signed_in);
+
+
+
+    toastr.options.positionClass = 'toast-bottom-full-width';
+    toastr.options.extendedTimeOut = 0; //1000;
+    toastr.options.timeOut = 1000;
+    toastr.options.fadeOut = 250;
+    toastr.options.fadeIn = 250;
+
+    if(signed_in=="false") toastr.warning('Niste logovani')
+    else {
+    $.post("/line_items?shoe_id="+id,function(data){
+
+      toastr.success('Uspjesno ste dodali artikal u korpu!')
+      var cart=$("#cart-badge").html();
+      $("#cart-badge").html(parseInt(cart)+1);
+
+    })}
+
+
+  })
+})
+</script>
