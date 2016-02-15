@@ -14,5 +14,7 @@ class LineItemsController < ApplicationController
     @line_item=LineItem.find(params[:id])
     @line_item.destroy
     redirect_to carts_path
+  rescue ActiveRecord::RecordNotFound
+    redirect_to carts_path
   end
 end

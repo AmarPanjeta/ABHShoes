@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:index]
 
+  resources :payments, only: [:create] 
+
   get 'store/dummy'
   get 'store/index'=> 'store#index'
   root 'store#index'
