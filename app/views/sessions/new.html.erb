@@ -1,26 +1,30 @@
-
-<h1>Login</h1>
-<% if flash[:error] %>
-    <p id="notice"><%= flash[:error] %></p>
-    <% end %>
-    <% if flash[:success] %>
-        <p id="notice"><%= flash[:success] %></p>
-        <% end %>
 <div class="row">
-  <div class="span6 offset3">
-    <%= form_for(:session,url:sessions_path) do |f| %>
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Login</h1>
 
+    <% if flash[:error] %>
+        <div class="alert alert-danger">
+           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Greska!</strong> <%= flash[:error] %>
+      </div>
+        <% end %>
+
+    <%= form_for(:session,url:sessions_path) do |f| %>
+    <div class="login-form">
+      <div class="form-group">
       <%= f.label :username %>
       <br>
+      <%= f.text_field :username, class:"form-control" %>
+      </div>
 
-      <%= f.text_field :username %>
-      <br>
-
+      <div class="form-group">
       <%= f.label :password %>
       <br>
-
-      <%= f.password_field :password %>
-      <br>
-
-      <%= f.submit "Potvrdi", class: "btn" %>
+      <%= f.password_field :password, class:"form-control" %>
+      </div>
+  </div>
+      <%= f.submit "Uloguj se", class: "btn right-align btn-dark-grey" %>
     <%end%>
+
+</div>
+</div>

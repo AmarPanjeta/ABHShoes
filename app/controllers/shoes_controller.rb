@@ -1,4 +1,5 @@
 class ShoesController < ApplicationController
+  include ShoesHelper
 
   def index
     @shoes=Shoe.all
@@ -11,12 +12,13 @@ class ShoesController < ApplicationController
     @shoe=Shoe.new(shoe_params)
 
     @shoe.save
-    flash[:success]="Uspjesno ste dodali cipeli"
+    flash[:success]="Uspjesno ste dodali cipelu"
     redirect_to @shoe
   end
 
   def show
     @shoe=Shoe.find(params[:id])
+    @list=similar
   end
 
   private

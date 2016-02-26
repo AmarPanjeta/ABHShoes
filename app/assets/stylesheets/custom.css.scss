@@ -2,10 +2,34 @@
 
 body {
   padding-top: 50px;
+  padding-bottom: 30px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   color:#fff;
+}
+
+.height-filler{
+  padding-top: 14px;
+}
+
+.login-form{
+  background-color: #f6f6f6;
+  padding:15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.btn-dark-grey{
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.right-align{
+  float: right;
 }
 
 .floated {
@@ -18,8 +42,16 @@ body {
 }
 
 .cart-payment{
-  color: #f0f;
+  width: auto;
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  padding: 20px;
+  margin-top: 88px;
+  margin-bottom: 15px;
   h4{
     margin-top: 15px;
+  }
+  p{
+    padding-right: 0%;
   }
 }

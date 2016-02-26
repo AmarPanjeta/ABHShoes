@@ -20,6 +20,19 @@
   }
 }
 
+.similar{
+
+  padding: 3px;
+  img{
+    margin: auto;
+    height: 150px;
+  }
+}
+.similar:hover{
+    box-shadow: 0px 0px 0px 1px #3399ff inset;
+}
+
+
 .shoe-single-info{
   padding-top: 15px;
   p{
