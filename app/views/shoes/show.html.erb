@@ -43,40 +43,24 @@
     </div>
 </div>
 
-
-<!-- Slicni proizvodi -->
 <div class="row">
-
     <div class="col-lg-12">
         <h3 class="page-header">Slicni proizvodi</h3>
     </div>
-
-    <div class="col-sm-3 col-xs-6">
-        <a href="#">
-            <img class="img-responsive portfolio-item" src="http://placehold.it/350x150" alt="">
+<% @list.each do |li| %>
+    <div class="col-sm-3 col-xs-6 similar">
+        <a href="<%=shoe_path(li.id)%>">
+            <img class="img-responsive" src="<%=li.imgurl%>" alt="" style="">
         </a>
     </div>
-
-    <div class="col-sm-3 col-xs-6">
-        <a href="#">
-            <img class="img-responsive portfolio-item" src="http://placehold.it/350x150" alt="">
-        </a>
-    </div>
-
-    <div class="col-sm-3 col-xs-6">
-        <a href="#">
-            <img class="img-responsive portfolio-item" src="http://placehold.it/350x150" alt="">
-        </a>
-    </div>
-
-    <div class="col-sm-3 col-xs-6">
-        <a href="#">
-            <img class="img-responsive portfolio-item" src="http://placehold.it/350x150" alt="">
-        </a>
-    </div>
+<%end%>
 </div>
 <div class="row" style="height:40px">
 </div>
+
+<div class="row" style="height:40px">
+</div>
+
 
 <script>
 $(document).ready(function(){

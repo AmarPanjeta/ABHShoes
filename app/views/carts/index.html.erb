@@ -30,6 +30,7 @@
             <a class="btn btn-default floated" href="#">Detaljnije <span class="glyphicon glyphicon-chevron-right"></span></a>
             <%= button_to line_item_path(li),class: "btn btn-default floated" ,method: :delete do %>
               Obrisi <span class="glyphicon glyphicon-remove"></span>
+            <% @price=@price+li.shoe.price %>
             <% end %>
           </div>
         </div>
@@ -39,12 +40,45 @@
     <% end %>
 </div>
 </div>
+
+<!-- Cart payment box -->
+
+<% if @quantity!=0 %>
 <div class="col-md-4">
   <div class="cart-payment">
     <h4>Korpa</h4>
     <div class="payment-box">
-      
+      <strong> Cijena </strong>
+      <p>Narudzba: <%=@price %></p>
+      <p>Isporuka: 30.0</p>
+      <p>Ukupno <%=@price+30.00%></p>
     </div>
   </div>
 </div>
+<form action="/payments" method="POST" class="right-align">
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-label="Placanje karticom"
+    data-key="pk_test_w2y76hBfXyXxh6eGExFiMgVm"
+    data-image="https://pbs.twimg.com/profile_images/570193155421503488/brZaisEE_reasonably_small.png"
+    data-name="Demo Site"
+    data-description="Broj cipela: <%=@quantity%>"
+    data-amount="<%=@price * 100 + 3000%>">
+  </script>
+</form>
+<%end%>
+
+<!-- Notification message script -->
+
+<% if !flash[:success].nil? %>
+<script>
+toastr.options.positionClass = 'toast-bottom-full-width';
+toastr.options.extendedTimeOut = 0; //1000;
+toastr.options.timeOut = 1000;
+toastr.options.fadeOut = 250;
+toastr.options.fadeIn = 250;
+toastr.success('Uspjesno ste kupili artikle!')
+</script>
+<%end%>
 </div>
