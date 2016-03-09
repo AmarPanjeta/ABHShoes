@@ -12,13 +12,13 @@
     <%= form_for(:session,url:sessions_path) do |f| %>
     <div class="login-form">
       <div class="form-group">
-      <%= f.label :username %>
+      <%= f.label :username,"Korisnicko ime" %>
       <br>
       <%= f.text_field :username, class:"form-control" %>
       </div>
 
       <div class="form-group">
-      <%= f.label :password %>
+      <%= f.label :password, "Sifra"%>
       <br>
       <%= f.password_field :password, class:"form-control" %>
       </div>
