@@ -10,10 +10,15 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
 
-    @user.save
-    raise
+    if @user.save
     flash[:success]="Uspjesna registracija"
     redirect_to @user #zasto ovo radi?
+    else
+      if @user.email
+      end
+    end
+
+
   end
 
   def show

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :shoes, only: [:show,:new,:create,:index]
+  resources :brands, only: [:new, :create, :index, :destroy]
+
+  resources :shoes, only: [:show,:new,:create,:index] 
 
   resources :users, only: [:index,:show,:new,:create]
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:index]
 
-  resources :payments, only: [:create] 
+  resources :payments, only: [:create]
 
   get 'store/dummy'
   get 'store/index'=> 'store#index'

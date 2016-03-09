@@ -5,6 +5,10 @@ body {
   padding-bottom: 30px;
 }
 
+select{
+padding: 4px;
+}
+
 .navbar-inverse .navbar-nav > li > a {
   color:#fff;
 }
@@ -27,6 +31,16 @@ body {
   background-color: #404040;
   color: #ffffff;
 }
+
+.btn-dark-grey:hover{
+  color: orange;
+}
+
+.btn-dark-grey:focus{
+  color: orange;
+}
+
+
 
 .right-align{
   float: right;
@@ -54,4 +68,8 @@ body {
   p{
     padding-right: 0%;
   }
+}
+
+.slect{
+  width: 90%;
 }
