@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :brands, only: [:new, :create, :index, :destroy]
 
-  resources :shoes, only: [:show,:new,:create,:index] 
+  resources :shoes, only: [:show,:new,:create,:index]
 
   resources :users, only: [:index,:show,:new,:create]
 
@@ -15,8 +15,11 @@ Rails.application.routes.draw do
 
   resources :payments, only: [:create]
 
+  get 'carts/next'
+  post 'carts/pay'
   get 'store/dummy'
   get 'store/index'=> 'store#index'
+
   root 'store#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

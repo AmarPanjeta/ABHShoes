@@ -1,38 +1,12 @@
 <div class="container-fluid">
   <div class="col-md-2">
-  <h4>FILTER</h4>
-
-  <h5 class="height-filler">Brend</h5>
-  <select class="slect" name="">
-    <option>Svi brendovi</option>
-  </select>
-
-  <h5 class="height-filler">Velicina</h5>
-  <select class="slect" name="">
-    <option>Sve velicine</option>
-  </select>
-
-  <h5 class="height-filler">Boja</h5>
-  <select class="slect" name="">
-    <option>Sve boje</option>
-  </select>
-
-  <h5 class="height-filler">Stil</h5>
-  <select class="slect" name="">
-    <option>Svi stilovi</option>
-  </select>
-
-  <h5 class="height-filler">Cijena</h5>
-  <select class="slect" name="">
-    <option>Sve cijene</option>
-  </select>
-
+    <%= render 'filter_form'%>
   </div>
   <div class="col-md-10">
     <div class="height-filler">
     </div>
   <div class="row">
-    <% @shoes.each do |shoe| %>
+    <% @shoes.each do |shoe|%>
 
     <div class="col-lg-3 col-md-4 col-xs-6 thumb shoe-box">
         <a href="<%=shoe_path(shoe.id)%>" class="thumbnail">

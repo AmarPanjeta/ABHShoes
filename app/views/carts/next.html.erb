@@ -1,0 +1,64 @@
+
+<!-- Page Content -->
+<div class="container">
+
+
+<div class="col-md-8">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><small>Vasi podaci</small>
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+<div class="col-md-8">
+  <% if flash[:error] %>
+  <% flash[:error].each do |o| %>
+      <div class="alert alert-danger">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= o %>
+    </div>
+  <% end %>
+  <% end %>
+<%= render 'info_form' %>
+</div>
+</div>
+
+<!-- Cart payment box -->
+
+<% if @quantity!=0 %>
+<div class="col-md-4">
+  <div class="cart-payment">
+    <div class="k-p-d">
+      <div class="row">
+      <div class="col-md-4 korpa" >KORPA</div>
+      <div class="col-md-4 dostava2">DOSTAVA</div>
+      <div class="col-md-4 placanje">PLACANJE</div>
+      </div>
+    </div>
+    <div class="payment-box">
+      <strong> Cijena </strong>
+      <p>Narudzba: <%=@price %></p>
+      <p>Isporuka: 30.0</p>
+      <p>Ukupno <%=@price+30.00%></p>
+    </div>
+  </div>
+  <button type="button" name="button" class="btn btn-default right-align">Odustani</button>
+</div>
+
+<%end%>
+
+<!-- Notification message script -->
+
+<% if !flash[:success].nil? %>
+<script>
+toastr.options.positionClass = 'toast-bottom-full-width';
+toastr.options.extendedTimeOut = 0; //1000;
+toastr.options.timeOut = 1000;
+toastr.options.fadeOut = 250;
+toastr.options.fadeIn = 250;
+toastr.success('Uspjesno ste kupili artikle!')
+</script>
+<%end%>
+</div>

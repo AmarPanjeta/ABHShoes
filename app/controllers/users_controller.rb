@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+  include UsersHelper
   def index
     @users=User.all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @users}
+    end
   end
 
   def new
@@ -14,15 +20,19 @@ class UsersController < ApplicationController
     flash[:success]="Uspjesna registracija"
     redirect_to @user #zasto ovo radi?
     else
-      if @user.email
-      end
+      userErrors(@user)
+      redirect_to new_user_path
     end
 
 
   end
 
   def show
-    @user=User.find(params[:id])
+    respond_to do |format|
+        format.html {@user=User.find(params[:id])}
+        format.json { @user=User.find(params[:id]);render json: @user }
+    end
+  #  @user=User.find(params[:id])
   end
 
   private

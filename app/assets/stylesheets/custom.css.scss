@@ -40,10 +40,16 @@ padding: 4px;
   color: orange;
 }
 
+.btn-inverse{
+  background-color: black;
+  color: white;
+}
+
 
 
 .right-align{
   float: right;
+  margin-left: 5px;
 }
 
 .floated {
@@ -68,6 +74,50 @@ padding: 4px;
   p{
     padding-right: 0%;
   }
+}
+
+.k-p-d{
+  margin-bottom: 10px;
+  .korpa{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+  .dostava{
+    color: #B3BABD;
+    border-bottom: 2px solid #B3BABD;
+  }
+  .placanje{
+    color: #B3BABD;
+    border-bottom: 2px solid #B3BABD;
+  }
+  .dostava2{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+  .placanje2{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+}
+
+.payment-info-box{
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  strong{
+    display: block;
+    padding: 2px 5px;
+  }
+}
+
+.info-form{
+  background-color: #f6f6f6; /* DEF2FA  */
+  padding:15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  border-radius: 3px;
+  margin-bottom: 15px;
+
 }
 
 .slect{

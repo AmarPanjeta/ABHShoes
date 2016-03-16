@@ -6,9 +6,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <% if nil%><li><a href=<%=store_index_path %>>Home</a></li><%end%>
-        <li><a href=<%=store_index_path %>>Muska obuca</a></li>
-        <li><a href="#">Zenska obuca</a></li>
-        <li><a href="#">Djecija obuca</a></li>
+        <li><a href=<%=store_index_path(category: 1) %>>Muska obuca</a></li>
+        <li><a href=<%=store_index_path(category: 2) %>>Zenska obuca</a></li>
+        <li><a href=<%=store_index_path(category: 3) %>>Djecija obuca</a></li>
         <li><a href="#">Dodaci</a></li>
       </ul>
       <% if !signed_in? %>

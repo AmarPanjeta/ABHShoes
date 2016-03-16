@@ -6,6 +6,8 @@
 #   cities = City.create([   {name: 'Chicago'}  ,   {name: 'Copenhagen'}   ])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+=begin
+
 Shoe.create(  name: 'Cipela 2' , description: 'Dummy1' , imgurl: 'https://i.ytimg.com/vi/EeaaaUDaHQw/maxresdefault.jpg' , price:60.00  )
 Shoe.create(  name: 'Cipela 3' , description: 'Dummy2' , imgurl: 'http://timpfest.org/wp-content/uploads/2013/09/Converse-Shoes.jpg' , price:70.00  )
 Shoe.create(  name: 'Cipela 5' , description: 'Dummy3' , imgurl: 'http://www.vegetarian-shoes.co.uk/Portals/42/product/images/prd06da61c8-f8a9-402a-8590-fbec98bfbf1a.jpg' , price:90.00  )
@@ -20,3 +22,90 @@ Shoe.create(  name: 'Cipela 1' , description: 'Dummy11' , imgurl: 'http://discou
 Shoe.create(  name: 'Cipela 4' , description: 'Dummy12' , imgurl: 'http://www.newnikeshoes.us/images/products/vxbR6m0FvYcefB8.jpg' , price:80.00  )
 Shoe.create(  name: 'Cipela 10' , description: 'Dummy13' , imgurl: 'http://thebestfashionblog.com/wp-content/uploads/2013/03/Camper-Kids-Shoes-Spring-Summer-2013-Lookbook-26.jpg' , price:80.00  )
 Shoe.create(  name: 'Cipela 13' , description: 'Dummy14' , imgurl: 'https://www.dvsshoes.com/media/products/aversa-ctx-kids-navy-gum-canvas-1.png' , price:50.00  )
+
+
+Brand.create([{name: "Nike"},{name: "Adidas"},{name: "Vans"},{name: "Tommy Hilfiger"},{name: "Timberland"},{name: "Puma"},{name: "Skechers"}])
+
+(1..14).each do |n|
+  s=Shoe.find(n)
+  s.brand=Brand.find(rand(1..7))
+  s.save
+end
+
+Category.create([{name:"Muska obuca"},{name:"Zenska obuca"},{name: "Djecija obuca"},{name: "Dodaci"}])
+
+
+# <--------------  muska obuca  ---------------------------->
+s=Shoe.find(1)
+c=Category.find(1)
+s.category=c
+s.save
+
+s=Shoe.find(2)
+c=Category.find(1)
+s.category=c
+s.save
+
+s=Shoe.find(3)
+c=Category.find(1)
+s.category=c
+s.save
+
+s=Shoe.find(4)
+c=Category.find(1)
+s.category=c
+s.save
+
+s=Shoe.find(7)
+c=Category.find(1)
+s.category=c
+s.save
+
+s=Shoe.find(10)
+c=Category.find(1)
+s.category=c
+s.save
+
+# <--------------  zenska obuca  ---------------------------->
+s=Shoe.find(5)
+c=Category.find(2)
+s.category=c
+s.save
+
+s=Shoe.find(6)
+c=Category.find(2)
+s.category=c
+s.save
+
+s=Shoe.find(8)
+c=Category.find(2)
+s.category=c
+s.save
+
+s=Shoe.find(9)
+c=Category.find(2)
+s.category=c
+s.save
+
+# <--------------  djecija obuca  ---------------------------->
+s=Shoe.find(11)
+c=Category.find(3)
+s.category=c
+s.save
+
+s=Shoe.find(12)
+c=Category.find(3)
+s.category=c
+s.save
+
+s=Shoe.find(13)
+c=Category.find(3)
+s.category=c
+s.save
+
+s=Shoe.find(14)
+c=Category.find(3)
+s.category=c
+s.save
+
+=end
