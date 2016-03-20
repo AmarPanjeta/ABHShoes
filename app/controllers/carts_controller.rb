@@ -9,11 +9,18 @@ class CartsController < ApplicationController
   end
 
   def next
+
+      @name=session[:info]["name"] if session[:info].present?
+      @surname=session[:info]["surname"] if session[:info].present?
+      @address=session[:info]["address"] if session[:info].present?
+      @city=session[:info]["city"] if session[:info].present?
+      @country=session[:info]["country"] if session[:info].present?
+      session[:info]=nil
     @quantity=current_user.cart.shoes.count
     @cart=current_user.cart
     @price=0
     @cart.line_items.each do |li|
-    @price=@price+li.shoe.price
+    @price=@price+li.shoe.price*li.quantity
     end
   end
 
@@ -25,6 +32,7 @@ class CartsController < ApplicationController
     error<<"Niste unijeli grad" if !params[:info][:city].present?
     error<<"Niste unijeli drzavu" if !params[:info][:country].present?
     if !error.empty?
+      session[:info]=params[:info]
       flash[:error]=error
       redirect_to carts_next_path
     else
@@ -38,7 +46,7 @@ class CartsController < ApplicationController
       @cart=current_user.cart
       @price=0
       @cart.line_items.each do |li|
-      @price=@price+li.shoe.price
+      @price=@price+li.shoe.price*li.quantity
       end
     end
   end

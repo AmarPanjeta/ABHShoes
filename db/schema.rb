@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309215752) do
+ActiveRecord::Schema.define(version: 20160319174622) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160309215752) do
     t.integer  "shoe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity",   default: 1
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"

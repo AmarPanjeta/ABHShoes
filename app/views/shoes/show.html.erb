@@ -12,14 +12,19 @@
     </div>
 
     <div class="col-md-4">
+        <p>
+        <strong><%=@shoe.category.name%> > <%=@shoe.brand.name%></strong>  
+        </p>
         <h3>Opis proizvoda</h3>
         <p><%=@shoe.description%></p>
+
+
 
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">
               <label>Kolicina:</label>
-              <input type="text" class="form-control" value="1">
+              <input id="quantity" type="number" class="form-control" min="1" max="10" value="1">
             </div>
           </div>
           <div class="col-md-4">
@@ -73,7 +78,7 @@ $(document).ready(function(){
     var id=$(this).attr("id").split("_")[1];
     var signed_in="<%=signed_in?%>";
     console.log(signed_in);
-
+    quantity=$('#quantity').val()
 
 
     toastr.options.positionClass = 'toast-bottom-full-width';
@@ -84,7 +89,7 @@ $(document).ready(function(){
 
     if(signed_in=="false") toastr.warning('Niste logovani')
     else {
-    $.post("/line_items?shoe_id="+id,function(data){
+    $.post("/line_items?shoe_id="+id+"&quantity="+quantity,function(data){
 
       toastr.success('Uspjesno ste dodali artikal u korpu!')
       var cart=$("#cart-badge").html();

@@ -5,7 +5,10 @@ class LineItemsController < ApplicationController
 
   def create
     shoe= Shoe.find(params[:shoe_id])
-    @cart.shoes<<shoe
+    li=LineItem.new
+    li.quantity=params[:quantity]
+    li.shoe=shoe
+    @cart.line_items<<li
     @cart.save
     render json: shoe
   end

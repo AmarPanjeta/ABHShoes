@@ -11,4 +11,5 @@ class PaymentsController<ApplicationController
     current_user.cart.line_items.clear
     redirect_to carts_path
   end
+
 end

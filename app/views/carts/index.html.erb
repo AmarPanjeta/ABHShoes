@@ -22,7 +22,7 @@
             </a>
         </div>
         <div class="col-md-5">
-            <h3><%=li.shoe.name%></h3>
+            <h3><%=li.shoe.name%> x <%=li.quantity%></h3>
             <h4>Kategorija: <br><%=li.shoe.category.name%></h4>
             <p>Opis: <%=li.shoe.description %></p>
             <p>Brend: <%= li.shoe.brand.name %>
@@ -31,7 +31,7 @@
             <a class="btn btn-default floated" href="#">Detaljnije <span class="glyphicon glyphicon-chevron-right"></span></a>
             <%= button_to line_item_path(li),class: "btn btn-default floated" ,method: :delete do %>
               Obrisi <span class="glyphicon glyphicon-remove"></span>
-            <% @price=@price+li.shoe.price %>
+            <% @price=@price+li.shoe.price*li.quantity %>
             <% end %>
           </div>
         </div>
@@ -62,20 +62,7 @@
     </div>
   </div>
   <a href="<%=carts_next_path %>"><button type="button" name="button" class="btn btn-inverse right-align">Nastavi </button></a>
-  <button type="button" name="button" class="btn btn-default right-align">Odustani</button>
 </div>
-<form action="/payments" method="POST" class="right-align">
-  <script
-    src="https://checkout.stripe.com/checkout.js"
-    class="stripe-button"
-    data-label="Placanje karticom"
-    data-key="pk_test_w2y76hBfXyXxh6eGExFiMgVm"
-    data-image="https://pbs.twimg.com/profile_images/570193155421503488/brZaisEE_reasonably_small.png"
-    data-name="Demo Site"
-    data-description="Broj cipela: <%=@quantity%>"
-    data-amount="<%=@price * 100 + 3000%>">
-  </script>
-</form>
 <%end%>
 
 <!-- Notification message script -->
