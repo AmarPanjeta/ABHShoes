@@ -45,7 +45,10 @@
 
   </div>
 </div>
-
+<ul class="pager">
+  <li><a href="<%=store_index_path(page: @previous_page)%>" disabled>Prethodna strana</a></li>
+  <li><a href="<%=store_index_path(params.merge(page: @next_page))%>">Sljedeca strana</a></li>
+</ul>
 
 
 <script>

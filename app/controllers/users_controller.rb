@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def new
+    if session[:user].present?
+    @user=User.new(session[:user])
+  else
     @user=User.new
+  end
   end
 
   def create
@@ -21,6 +25,7 @@ class UsersController < ApplicationController
     redirect_to @user #zasto ovo radi?
     else
       userErrors(@user)
+      session[:user]=params[:user]
       redirect_to new_user_path
     end
 
@@ -32,7 +37,6 @@ class UsersController < ApplicationController
         format.html {@user=User.find(params[:id])}
         format.json { @user=User.find(params[:id]);render json: @user }
     end
-  #  @user=User.find(params[:id])
   end
 
   private
