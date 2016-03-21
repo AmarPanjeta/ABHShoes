@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def new
     if session[:user].present?
     @user=User.new(session[:user])
+    session[:user]=nil
   else
     @user=User.new
   end

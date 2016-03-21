@@ -39,6 +39,8 @@ gem 'binding_of_caller'
 
 gem 'stripe'
 
+gem 'bootstrap-select-rails'
+
 #gem for heroku
 gem 'rails_12factor', group: :production
 

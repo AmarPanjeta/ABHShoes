@@ -2,7 +2,7 @@
   <h4>FILTER</h4>
 
   <h5 class="height-filler">Brend</h5>
-  <select class="slect" name="brand">
+  <select class="selectpicker slect" name="brand">
     <option value="">Svi brendovi</option>
     <% Brand.all.each do |b| %>
     <option value="<%=b.id%>"><%=b.name%></option>
@@ -10,24 +10,24 @@
   </select>
 
   <h5 class="height-filler">Velicina</h5>
-  <select class="slect" name="">
+  <select class="selectpicker slect" name="">
     <option>Sve velicine</option>
   </select>
 
   <h5 class="height-filler">Boja</h5>
-  <select class="slect" name="">
+  <select class="selectpicker slect" name="">
     <option>Sve boje</option>
   </select>
 
   <h5 class="height-filler">Stil</h5>
-  <select class="slect" name="">
+  <select class="selectpicker slect" name="">
     <option>Svi stilovi</option>
   </select>
 
   <h5 class="height-filler">Cijena</h5>
-  <select class="slect" name="">
+  <select class="selectpicker slect" name="">
     <option>Sve cijene</option>
   </select>
   <input type="hidden" name="category" value="<%= params[:category]%>"/>
-  <%= submit_tag "Filtriraj" ,class: "btn", name: nil%>
+  <%= submit_tag "Filtriraj" ,class: "btn btn-default", name: nil%>
 <% end %>
