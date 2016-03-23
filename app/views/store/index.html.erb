@@ -46,8 +46,10 @@
   </div>
 </div>
 <ul class="pager">
-  <li><a href="<%=store_index_path(page: @previous_page)%>" disabled>Prethodna strana</a></li>
-  <li><a href="<%=store_index_path(params.merge(page: @next_page))%>">Sljedeca strana</a></li>
+  <li class="pager-prev <% if @previous_page.nil? %>disabled<% end %>"><a href="<%=store_index_path(params.merge(page: "1"))%>" disabled="disabled">Prva</a></li>
+  <li class="pager-prev <% if @previous_page.nil? %>disabled<% end %>"><a href="<%=store_index_path(params.merge(page: @previous_page))%>">Prethodna strana</a></li>
+  <li class="pager-next <% if @next_page.nil? %>disabled<% end %>"><a href="<%=store_index_path(params.merge(page: @next_page))%>">Sljedeca strana</a></li>
+  <li class="pager-prev <% if @next_page.nil? %>disabled<% end %>"><a href="<%=store_index_path(params.merge(page: @number_of_pages))%>">Zadnja</a></li>
 </ul>
 
 
@@ -93,4 +95,5 @@ $('#zatvori').click(function(e){
 $('#myModal').on('hidden.bs.modal', function() {
   $('#quantity').value="1"
 })
+
 </script>

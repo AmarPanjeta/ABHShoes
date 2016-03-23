@@ -127,3 +127,9 @@ padding: 4px;
 .bootstrap-select>.btn{
   width: 70%;
 }
+
+.disabled{
+  pointer-events: none;
+  color: gray;
+  border-color: gray;
+}
