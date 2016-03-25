@@ -22,7 +22,7 @@ Shoe.create(  name: 'Cipela 1' , description: 'Dummy11' , imgurl: 'http://discou
 Shoe.create(  name: 'Cipela 4' , description: 'Dummy12' , imgurl: 'http://www.newnikeshoes.us/images/products/vxbR6m0FvYcefB8.jpg' , price:80.00  )
 Shoe.create(  name: 'Cipela 10' , description: 'Dummy13' , imgurl: 'http://thebestfashionblog.com/wp-content/uploads/2013/03/Camper-Kids-Shoes-Spring-Summer-2013-Lookbook-26.jpg' , price:80.00  )
 Shoe.create(  name: 'Cipela 13' , description: 'Dummy14' , imgurl: 'https://www.dvsshoes.com/media/products/aversa-ctx-kids-navy-gum-canvas-1.png' , price:50.00  )
-=end
+
 
 Brand.create([{name: "Nike"},{name: "Adidas"},{name: "Vans"},{name: "Tommy Hilfiger"},{name: "Timberland"},{name: "Puma"},{name: "Skechers"}])
 
@@ -107,3 +107,28 @@ s=Shoe.find(14)
 c=Category.find(3)
 s.category=c
 s.save
+
+
+Color.create(name: "Crvena", hex: "#ff0000")
+Color.create(name: "Plava", hex: "#0066ff")
+Color.create(name: "Svijetloplava", hex: "#99ccff")
+Color.create(name: "Zuta", hex: "#ffff00")
+Color.create(name: "Bijela", hex: "#ffffff")
+Color.create(name: "Narandzasta", hex: "#ff6600")
+Color.create(name: "Zelena", hex: "#33cc33")
+Color.create(name: "Smedja", hex: "#804000")
+Color.create(name: "Ljubicasta", hex: "#cc33ff")
+Color.create(name: "Crna", hex: "#000000")
+Color.create(name: "Siva", hex: "#808080")
+Color.create(name: "Roza", hex: "#ff99c2")
+
+
+Shoe.all.each do |shoe|
+  (1..10).each do |n|
+    p=ProductVariant.create(color: Color.find(rand(1..12)),size: rand(32..49))
+    shoe.product_variants<<p
+    shoe.save
+  end
+end
+
+=end

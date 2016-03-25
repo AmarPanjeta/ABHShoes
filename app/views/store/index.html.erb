@@ -14,6 +14,11 @@
         </a>
         <p><%=shoe.name%></p>
       <!--  <%= link_to "Dodaj u korpu", "#",:id => "shoe_#{shoe.id}", "data-toggle" => "modal", 'data-target' => "#myModal",class:"btn btn-default add-to-cart"  %> -->
+      <div class="row padding-fixer">
+        <% shoe.colors.distinct.each do |c| %>
+        <div id="color_<%=c.id%>" class="color-boxie" style="background-color: <%=c.hex%>"></div>
+        <% end %>
+      </div>
         <%= button_to "Dodaj u korpu", "#", class: "btn add-to-cart", id:"shoe_#{shoe.id}" %>
     </div>
     <% end %>
@@ -30,16 +35,27 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Dodaj u korpu</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label for="quantity">Kolicina</label>
           <input id="quantity" type="number"  name="quantity" min="1" max="10" value="1" class="form-control">
         </div>
+        <div class="form-group">
+          <label for="quantity">Boje:</label>
+          <div id="color-boxies" class="row padding-fixer"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Velicine:</label>
+          <select id="sizes" name="size" class="select">
+
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
-        <button id="zatvori" type="button" class="btn btn-default">Dodaj u korpu</button>
+        <button id="zatvori" type="button" class="btn btn-default">Nastavi</button>
       </div>
     </div>
 
@@ -55,6 +71,10 @@
 
 <script>
 var id=0;
+window.onload = function () {
+  $('#sizes').empty();
+};
+
 $(document).ready(function(){
   $('.add-to-cart').click(function(e){
     e.preventDefault();
@@ -73,7 +93,26 @@ $(document).ready(function(){
 
     if(signed_in=="false") toastr.warning('Niste logovani')
     else {
-
+      $.get("/shoe_colors?id="+id,function(data){
+        for(var i=0;i<data.length;i++){
+          color_id=data[i].id
+          $('#color-boxies').append('<div id="color_'+color_id+'" class="color-boxie-press" style="background-color:'+data[i].hex+'"></div>')
+        }
+        $('.color-boxie-press').click(function(e){
+            $('#sizes').empty()
+            color_id=$(this).attr("id").split('_')[1];
+            console.log('ok');
+            $.get("/sizes?color="+color_id+"&shoe="+id,function(data){
+              data.sort();
+              for(var i=0;i<data.length;i++){
+                $('#sizes').append('<option value="'+data[i]+'">'+data[i]+'</option>')
+              }
+              console.log(data);
+          });
+        })
+        nekonesto=data;
+        console.log(data);
+    });
       $('#myModal').modal('toggle')
     }
   })
@@ -82,18 +121,43 @@ $(document).ready(function(){
 $('#zatvori').click(function(e){
   console.log("je li ravno oooovoooo?");
   quantity=$('#quantity').val()
-  $.post("/line_items?shoe_id="+id+"&quantity="+quantity,function(data){
+  size=$("#sizes").val()
+  if (($('#sizes').is(':empty'))) {
+          toastr.warning('Niste odabrali boju ni velicinu!')
+  }
+  else{
+  $.post("/line_items?shoe_id="+id+"&quantity="+quantity+"&color="+color_id+"&size="+size,function(data){
     console.log(data);
     toastr.success('Uspjesno ste dodali artikal u korpu!')
     var cart=$("#cart-badge").html();
     $("#cart-badge").html(parseInt(cart)+1);
+    console.log(quantity+" "+id+" "+color_id);
 
   })
+    console.log(quantity+" "+id+" "+color_id+" "+size);
   $("#myModal").modal("hide");
+  }
 })
 
 $('#myModal').on('hidden.bs.modal', function() {
-  $('#quantity').value="1"
+  $('#sizes').empty();
+  $('#color-boxies').empty();
+  $('#quantity').value="1";
+})
+
+$(document).ready(function(){
+  $('.color-boxie-press').click(function(e){
+      e.preventDefault();
+      color_id=$(this).attr("id").split('_')[1];
+      console.log('ok');
+      $.get("/shoe_colors?id="+color_id,function(data){
+        tekst="";
+        for(var i=0;i<data.length;i++){
+          tekst+=data[i].name;
+        }
+        console.log(tekst);
+    });
+  })
 })
 
 </script>

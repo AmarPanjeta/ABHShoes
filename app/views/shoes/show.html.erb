@@ -13,13 +13,17 @@
 
     <div class="col-md-4">
         <p>
-        <strong><%=@shoe.category.name%> > <%=@shoe.brand.name%></strong>  
+        <strong><%=@shoe.category.name%> > <%=@shoe.brand.name%></strong>
         </p>
         <h3>Opis proizvoda</h3>
         <p><%=@shoe.description%></p>
 
-
-
+        <label>Boje:</label>
+        <div class="row padding-fixer">
+          <% @shoe.colors.distinct.each do |c| %>
+          <div id="color_<%=c.id%>" class="color-boxie-press" style="background-color: <%=c.hex%>"></div>
+          <% end %>
+        </div>
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">
@@ -30,8 +34,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Velicina:</label>
-              <select name="cars" class="form-control" value="1">
-                <option selected="selected">43</option>
+              <select id="sizes" name="size" name="cars" class="form-control">
               </select>
             </div>
           </div>
@@ -69,6 +72,26 @@
 
 
 <script>
+window.onload = function () {
+  $('#sizes').empty();
+};
+  
+$(document).ready(function(){
+  $('.color-boxie-press').click(function(e){
+      $('#sizes').empty()
+      color_id=$(this).attr("id").split('_')[1];
+      id=<%=@shoe.id=%>;
+      console.log('ok');
+      $.get("/sizes?color="+color_id+"&shoe="+id,function(data){
+        data.sort();
+        for(var i=0;i<data.length;i++){
+          $('#sizes').append('<option value="'+data[i]+'">'+data[i]+'</option>')
+        }
+        console.log(data);
+    });
+  })
+})
+
 $(document).ready(function(){
   $('.add-to-cart').click(function(e){
     e.preventDefault();
@@ -78,8 +101,8 @@ $(document).ready(function(){
     var id=$(this).attr("id").split("_")[1];
     var signed_in="<%=signed_in?%>";
     console.log(signed_in);
-    quantity=$('#quantity').val()
-
+    quantity=$('#quantity').val();
+    size=$('#sizes').val();
 
     toastr.options.positionClass = 'toast-bottom-full-width';
     toastr.options.extendedTimeOut = 0; //1000;
@@ -88,16 +111,18 @@ $(document).ready(function(){
     toastr.options.fadeIn = 250;
 
     if(signed_in=="false") toastr.warning('Niste logovani')
+    else if ($('#sizes').is(':empty')) {
+            toastr.warning('Niste odabrali boju ni velicinu!')
+    }
     else {
-    $.post("/line_items?shoe_id="+id+"&quantity="+quantity,function(data){
+
+    $.post("/line_items?shoe_id="+id+"&quantity="+quantity+"&size="+size+"&color="+color_id,function(data){
 
       toastr.success('Uspjesno ste dodali artikal u korpu!')
       var cart=$("#cart-badge").html();
       $("#cart-badge").html(parseInt(cart)+1);
 
     })}
-
-
   })
 })
 </script>

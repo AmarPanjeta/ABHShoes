@@ -13,7 +13,7 @@
         </div>
     </div>
     <!-- /.row -->
-<div class="col-md-8">
+<div>
     <% @cart.line_items.each do |li| %>
     <div class="row">
         <div class="col-md-7">
@@ -23,12 +23,12 @@
         </div>
         <div class="col-md-5">
             <h3><%=li.shoe.name%> x <%=li.quantity%></h3>
-            <h4>Kategorija: <br><%=li.shoe.category.name%></h4>
-            <p>Opis: <%=li.shoe.description %></p>
-            <p>Brend: <%= li.shoe.brand.name %>
+            <p>Kategorija: <%=li.shoe.category.name%></p>
+            <p>Brend: <%= li.shoe.brand.name %></p>
+            <p>Velicina: <%=li.size %></p>
+            <span>Boja:</span> <div class="color-boxie-visible" style="background-color:<%=li.color.hex%>"></div>
             <p>Cijena:<strong> <%= li.shoe.price %> KM</strong></p>
             <div class="row">
-            <a class="btn btn-default floated" href="#">Detaljnije <span class="glyphicon glyphicon-chevron-right"></span></a>
             <%= button_to line_item_path(li),class: "btn btn-default floated" ,method: :delete do %>
               Obrisi <span class="glyphicon glyphicon-remove"></span>
             <% @price=@price+li.shoe.price*li.quantity %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319174622) do
+ActiveRecord::Schema.define(version: 20160325105449) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -33,16 +33,36 @@ ActiveRecord::Schema.define(version: 20160319174622) do
     t.datetime "updated_at"
   end
 
+  create_table "colors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "hex"
+  end
+
   create_table "line_items", force: true do |t|
     t.integer  "cart_id"
     t.integer  "shoe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity",   default: 1
+    t.integer  "size"
+    t.integer  "color_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["color_id"], name: "index_line_items_on_color_id"
   add_index "line_items", ["shoe_id"], name: "index_line_items_on_shoe_id"
+
+  create_table "product_variants", force: true do |t|
+    t.integer  "color_id"
+    t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "shoe_id"
+  end
+
+  add_index "product_variants", ["shoe_id"], name: "index_product_variants_on_shoe_id"
 
   create_table "shoes", force: true do |t|
     t.string   "name"

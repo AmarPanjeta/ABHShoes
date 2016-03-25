@@ -7,6 +7,8 @@ class LineItemsController < ApplicationController
     shoe= Shoe.find(params[:shoe_id])
     li=LineItem.new
     li.quantity=params[:quantity]
+    li.color=Color.find(params[:color])
+    li.size=params[:size]
     li.shoe=shoe
     @cart.line_items<<li
     @cart.save

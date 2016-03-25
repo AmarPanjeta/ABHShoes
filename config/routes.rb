@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :product_variants
+
+  resources :colors
+
   resources :brands, only: [:new, :create, :index, :destroy]
 
   resources :shoes, only: [:show,:new,:create,:index]
@@ -15,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :payments, only: [:create]
 
+  get 'sizes'=>'product_variants#sizes'
+  post 'shoe_colors'=>'colors#shoe_colors'
+  get 'shoe_colors'=>'colors#shoe_colors'
   get 'carts/next'
   post 'carts/pay'
   get 'store/dummy'

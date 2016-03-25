@@ -15,6 +15,41 @@
     visibility: hidden;
   }
 }
+.padding-fixer{
+  padding: 0px 15px;
+}
+
+.color-boxie{
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid gray;
+  visibility: hidden;
+  display: inline-block;
+}
+
+.color-boxie-visible{
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid gray;
+  display: inline-block;
+}
+.color-boxie-press{
+  width: 25px;
+  height: 25px;
+  margin-left: 2px;
+  border-radius: 3px;
+  border: 1px solid gray;
+  display: inline-block;
+}
+.select{
+  width: 240px;
+  height: 34px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
 .shoe-box:hover{
   box-shadow: 0px 0px 0px 1px #d9d9d9 inset;
@@ -22,6 +57,9 @@
     visibility: visible;
   }
   a.btn{
+    visibility: visible;
+  }
+  .color-boxie{
     visibility: visible;
   }
 }
