@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:index]
 
   resources :payments, only: [:create]
-
+  get 'admin/panel'
   get 'sizes'=>'product_variants#sizes'
   post 'shoe_colors'=>'colors#shoe_colors'
   get 'shoe_colors'=>'colors#shoe_colors'
