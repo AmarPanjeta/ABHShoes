@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
     session[:username]=nil
     session[:cart_id]=nil
     sign_out
-    redirect_to root_path
+    flash[:sign_out]=1
+    redirect_to store_index_path
   end
 end

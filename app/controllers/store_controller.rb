@@ -10,6 +10,10 @@ class StoreController < ApplicationController
     condition={}
     condition[:category]=params[:category] if params[:category].present?
     condition[:brand]=params[:brand] if params[:brand].present?
+    if params[:pricerange].present?
+      range=params[:pricerange].split('-').map{|d| Integer(d)}
+      condition[:price]=(range[0]..range[1])
+    end
 
     productvarianthash={}
     productvarianthash[:color]=params[:color] if params[:color].present?
@@ -20,6 +24,10 @@ class StoreController < ApplicationController
       @shoes=Shoe.joins(:product_variants).where(condition).uniq.limit(8).offset(offset)
     else
       @shoes=Shoe.where(condition).limit(8).offset(offset)
+    end
+
+    if @shoes.empty?
+      flash.now[:empty]="Nažalost, nema proizvoda koji odgovaraju Vašim zahtjevima."
     end
 
     if !productvarianthash.empty?

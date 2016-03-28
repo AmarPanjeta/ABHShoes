@@ -27,8 +27,12 @@
   </select>
 
   <h5 class="height-filler">Cijena</h5>
-  <select class="selectpicker slect" name="">
-    <option >Sve cijene</option>
+  <select class="selectpicker slect" name="pricerange">
+    <option value="">Sve cijene</option>
+    <option value="30-60"> 30 - 60 <option>
+    <option value="60-90"> 60 - 90 <option>
+    <option value="90-120"> 90 - 120 <option>
+    <option value="120-1000"> 120 -  <option>
   </select>
   <input type="hidden" name="category" value="<%= params[:category]%>"/>
   <%= submit_tag "Filtriraj" ,class: "btn btn-default", name: nil%>
