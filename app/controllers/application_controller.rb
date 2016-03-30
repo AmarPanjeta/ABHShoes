@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
       redirect_to store_index_path
     end
   end
+
+  def admin_rights
+    if !is_admin?
+      redirect_to store_index_path
+    end
+  end
 end

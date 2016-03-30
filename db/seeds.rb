@@ -6,7 +6,8 @@
 #   cities = City.create([   {name: 'Chicago'}  ,   {name: 'Copenhagen'}   ])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-=begin
+u=User.new(username: "admin", email:"admin@atlant.ba", name: "admin", surname:"admin", password:"admin",password_confirmation: "admin",admin:true)
+u.save
 
 Shoe.create(  name: 'Cipela 2' , description: 'Dummy1' , imgurl: 'https://i.ytimg.com/vi/EeaaaUDaHQw/maxresdefault.jpg' , price:60.00  )
 Shoe.create(  name: 'Cipela 3' , description: 'Dummy2' , imgurl: 'http://timpfest.org/wp-content/uploads/2013/09/Converse-Shoes.jpg' , price:70.00  )
@@ -130,5 +131,3 @@ Shoe.all.each do |shoe|
     shoe.save
   end
 end
-
-=end
