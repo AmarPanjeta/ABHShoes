@@ -21,7 +21,7 @@
   <select class="selectpicker slect" name="color">
     <option value="">Sve boje</option>
     <% Color.all.each do |c| %>
-    <option value="<%=c.id%>" style="background-color:<%=c.hex%>"><%=c.name%>
+    <option value="<%=c.id%>" style="background-color:<%=c.hex%>;<% if c.name=='Crna'||c.name=='Smedja'||c.name=='Siva'%>color:white;<%else%>color:black;<%end%>"><%=c.name%>
     </option>
     <%end%>
   </select>
@@ -34,6 +34,7 @@
     <option value="90-120"> 90 - 120 <option>
     <option value="120-1000"> 120 -  <option>
   </select>
+
   <input type="hidden" name="category" value="<%= params[:category]%>"/>
-  <%= submit_tag "Filtriraj" ,class: "btn btn-default", name: nil%>
+  <%= submit_tag "Filtriraj" ,class: "btn btn-default btn-space", name: nil%>
 <% end %>

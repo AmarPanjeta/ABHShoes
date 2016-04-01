@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :shoes, only: [:show,:new,:create,:index]
 
-  resources :users, only: [:index,:show,:new,:create]
+  resources :users, only: [:index,:show,:new,:create,:destroy]
 
 
   resources :sessions, only: [:new,:create,:destroy]

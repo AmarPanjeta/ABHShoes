@@ -14,6 +14,13 @@
     </div>
     <!-- /.row -->
 <div>
+
+  <% if @cart.line_items.count==0%>
+  <div >
+    <h3>Trenutno nemate artikala u korpi.</h3>
+    <%= button_to "Nazad na kupovinu",root_path,class:"btn btn-default", method: :get%>
+  </div>
+  <%end%>
     <% @cart.line_items.each do |li| %>
     <div class="row">
         <div class="col-md-7">
@@ -56,9 +63,9 @@
     </div>
     <div class="payment-box">
       <strong> Cijena </strong>
-      <p>Narudzba: <%=@price %></p>
-      <p>Isporuka: 30.0</p>
-      <p>Ukupno <%=@price+30.00%></p>
+      <p>Narudzba: <%=@price %>KM</p>
+      <p>Isporuka: 30.0KM</p>
+      <p>Ukupno: <%=@price+30.00%>KM</p>
     </div>
   </div>
   <a href="<%=carts_next_path %>"><button type="button" name="button" class="btn btn-inverse right-align">Nastavi </button></a>

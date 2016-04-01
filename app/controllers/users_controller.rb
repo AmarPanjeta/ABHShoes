@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
+  before_action :authorize, only:[:index]
+  before_action :admin_rights, only:[:index]
   def index
     @users=User.all
 
@@ -38,6 +40,14 @@ class UsersController < ApplicationController
         format.html {@user=User.find(params[:id])}
         format.json { @user=User.find(params[:id]);render json: @user }
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if !@user.admin
+    @user.destroy
+  end
+    head :no_content
   end
 
   private

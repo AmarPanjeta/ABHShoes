@@ -1,20 +1,126 @@
-<h1> Lista korisnika </h1>
+<div id="wrapper">
 
-<div class="col-sm-3">
-<table class="table table-striped table-bordered">
-  <tr>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Last name</th>
-  </tr>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Panel
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Korisnici <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse">
+                    <li>
+                        <a href="<%=users_path%>">Lista korisika</a>
+                    </li>
+                    <li>
+                        <a href="#">Dropdown Item</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Kategorije <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo1" class="collapse">
+                    <li>
+                        <a href="#">Pregled</a>
+                    </li>
+                    <li>
+                        <a href="#">Brisanje</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Cipele <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo2" class="collapse">
+                    <li>
+                        <a href="#">Pregled</a>
+                    </li>
+                    <li>
+                        <a href="#">Dodavanje</a>
+                    </li>
+                    <li>
+                        <a href="#">Dodavanja varijanti</a>
+                    </li>
+                    <li>
+                        <a href="#">Izmjena</a>
+                    </li>
+                    <li>
+                        <a href="#">Brisanje</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-11">
+                  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="icon" class="glyphicon glyphicon-chevron-left"></span></a>
+                    <h1>Administratorski panel</h1>
+                    <p>Brzi linkovi:</p>
 
-  <% @users.each do |user| %>
-    <tr <% if user.admin %> class="danger"<%end%>>
-      <td><%=user.username%></td>
-      <td><%=user.email%></td>
-      <td><%=user.name%></td>
-      <td><%=user.surname%></td>
-    </tr>
-  <% end %>
+
+
+                    <h1> Lista korisnika </h1>
+
+
+                    <table class="table table-striped table-bordered">
+                      <tr>
+                        <th>Korisnicko ime</th>
+                        <th>Email adresa</th>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Obrisi</th>
+                      </tr>
+
+                      <% @users.each do |user| %>
+                        <tr <% if user.admin %> class="danger"<%end%>>
+                          <td><%=user.username%></td>
+                          <td><%=user.email%></td>
+                          <td><%=user.name%></td>
+                          <td><%=user.surname%></td>
+                          <td><%if !user.admin%><a id="user_<%=user.id%>" class="brisanje" href=#>Obrisi</a><%end%></td>
+                        </tr>
+                      <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
 </div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+$('.brisanje').click(function(e){
+  full_id=$(this).attr('id');
+  id=full_id.split('_')[1];
+  console.log(id);
+})
+
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    if ($("#icon").attr("class")=="glyphicon glyphicon-chevron-left"){
+      $("#icon").removeClass();
+      $("#icon").addClass("glyphicon glyphicon-chevron-right");
+    }
+    else{
+      $("#icon").removeClass();
+      $("#icon").addClass("glyphicon glyphicon-chevron-left");
+    }
+
+    $("#wrapper").toggleClass("toggled");
+});
+</script>
