@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
     end
     session[:user_id] = user.id
     session[:username]=user.username
-    flash[:success]="Uspjesan login!"
-    redirect_to user
+    flash[:sign_in]="Uspjesan login!"
+    redirect_to store_index_path
     else
       flash[:error]='Pogresna username/password kombinacija'
       redirect_to new_session_path

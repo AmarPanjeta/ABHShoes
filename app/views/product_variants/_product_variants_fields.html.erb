@@ -1,0 +1,11 @@
+<p>
+  <%= f.label :size, "Velicina" %>
+  <%= f.text_field :size %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove" %>
+
+  <div class="form-group">
+    <%= f.label :color_id, "Kategorija"%><br>
+      <%=f.select(:color_id,Color.all.collect{|c|[c.name,c.id]},{},{class:"selectpicker"}) %>
+  </div>
+</p>

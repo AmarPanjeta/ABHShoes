@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :brands, only: [:new, :create, :index, :destroy]
 
-  resources :shoes, only: [:show,:new,:create,:index]
+  resources :shoes, only: [:show,:new,:create,:index,:destroy]
 
   resources :users, only: [:index,:show,:new,:create,:destroy]
 
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:index]
 
   resources :payments, only: [:create]
+  get 'variants'=>'product_variants#variants_edit'
+  get 'admin/panel/cipele'=>'shoes#admin_index'
   get 'admin/panel'
   get 'sizes'=>'product_variants#sizes'
   post 'shoe_colors'=>'colors#shoe_colors'

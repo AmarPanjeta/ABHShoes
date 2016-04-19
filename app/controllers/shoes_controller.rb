@@ -4,16 +4,20 @@ class ShoesController < ApplicationController
   def index
     @shoes=Shoe.all
   end
+
+  def admin_index
+    @shoes=Shoe.all
+  end
+
   def new
     @shoe=Shoe.new
   end
 
   def create
     @shoe=Shoe.new(shoe_params)
-
     @shoe.save
-    flash[:success]="Uspjesno ste dodali cipelu"
-    redirect_to @shoe
+    
+    render json: @shoe
   end
 
   def show
@@ -21,8 +25,14 @@ class ShoesController < ApplicationController
     @list=similar
   end
 
+  def destroy
+    @shoe = Shoe.find(params[:id])
+    @shoe.destroy
+    head :no_content
+  end
+
   private
   def shoe_params
-    params.require(:shoe).permit(:name,:description,:imgurl,:price)
+    params.require(:shoe).permit(:name,:description,:imgurl,:price,:category_id,:brand_id)
   end
 end

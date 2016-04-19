@@ -5,4 +5,9 @@ class ColorsController < ApplicationController
     colors=shoe.colors.uniq
     render json:colors
   end
+
+  def color
+    color=Color.find(params[:id])
+    render json: color
+  end
 end

@@ -79,6 +79,9 @@ window.onload = function () {
   <%if flash[:sign_out] %>
   toastr.success("Uspjesno ste se odjavili!")
   <%end%>
+  <%if flash[:sign_in] %>
+  toastr.success("Uspjesno ste se prijavili!")
+  <%end%>
   $('#sizes').empty();
 };
 

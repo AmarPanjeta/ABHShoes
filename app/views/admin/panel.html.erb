@@ -2,57 +2,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Panel
-                    </a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Korisnici <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            <a href="<%=users_path%>">Lista korisika</a>
-                        </li>
-                        <li>
-                            <a href="#">Dropdown Item</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Kategorije <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo1" class="collapse">
-                        <li>
-                            <a href="#">Pregled</a>
-                        </li>
-                        <li>
-                            <a href="#">Brisanje</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Cipele <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo2" class="collapse">
-                        <li>
-                            <a href="#">Pregled</a>
-                        </li>
-                        <li>
-                            <a href="#">Dodavanje</a>
-                        </li>
-                        <li>
-                            <a href="#">Dodavanja varijanti</a>
-                        </li>
-                        <li>
-                            <a href="#">Izmjena</a>
-                        </li>
-                        <li>
-                            <a href="#">Brisanje</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <%= render 'layouts/sidebar' %>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -61,8 +11,10 @@
                     <div class="col-lg-12">
                       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="icon" class="glyphicon glyphicon-chevron-left"></span></a>
                         <h1>Administratorski panel</h1>
-                        <p>Brzi linkovi</p>
-
+                        <p>Brzi linkovi:</p>
+                        <a href="<%=users_path%>" style="display:block">Lista korisnka</a>
+                        <a href="<%=admin_panel_cipele_path%>" style="display:block">Lista cipela</a>
+                        <a href="<%=new_shoe_path%>" style="display:block">Dodavanje cipele</a>
                     </div>
                 </div>
             </div>
